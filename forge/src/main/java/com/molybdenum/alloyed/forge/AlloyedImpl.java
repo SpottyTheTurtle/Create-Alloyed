@@ -1,26 +1,15 @@
 package com.molybdenum.alloyed.forge;
 
-import com.mojang.brigadier.CommandDispatcher;
 import com.molybdenum.alloyed.Alloyed;
 import com.molybdenum.alloyed.multiloader.Env;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands.CommandSelection;
-import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.util.MavenVersionStringHelper;
-import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.forgespi.language.IModInfo;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.function.BiConsumer;
 
 @Mod(Alloyed.MOD_ID)
 @Mod.EventBusSubscriber
