@@ -4,4 +4,5 @@ Create: Alloyed is an addon for the Create mod that adds *two new metals, Bronze
 **Team:**<br />
 **Bagels** - Artist, Owner<br />
 **SpottyTheTurtle** - Coder<br />
-**FortressNebula** - Coder
+**FortressNebula** - Coder<br />
+**MinMaximilian** - Fixer of Bullshit

@@ -8,8 +8,7 @@ architectury {
 }
 
 loom {
-    Project common = project(":common")
-    accessWidenerPath = common.loom.accessWidenerPath
+    accessWidenerPath = project(":common").loom.accessWidenerPath
 
     runs {
         datagen {
@@ -17,9 +16,9 @@ loom {
 
             name "Minecraft Data"
             vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${common.file("src/generated/resources")}"
+            vmArg "-Dfabric-api.datagen.output-dir=${project.rootProject.file("fabric/src/generated/resources")}"
             vmArg "-Dfabric-api.datagen.modid=alloyed"
-            vmArg "-Dporting_lib.datagen.existing_resources=${common.file("src/main/resources")}"
+            vmArg "-Dporting_lib.datagen.existing_resources=${project.rootProject.file("common/src/main/resources")}"
         }
     }
 }
