@@ -8,8 +8,7 @@ architectury {
 }
 
 loom {
-    Project common = project(":common")
-    accessWidenerPath = common.loom.accessWidenerPath
+    accessWidenerPath = project(":common").loom.accessWidenerPath
 
     forge {
         convertAccessWideners = true
@@ -58,10 +57,10 @@ dependencies {
 processResources {
     // set up properties for filling into metadata
     Map<String, String> properties = Map.of(
-            "version", version as String,
-            "forge_version", forge_version.split("\\.")[0], // only specify major version of forge
-            "minecraft_version", minecraft_version,
-            "create_version", create_forge_version.split("-")[0] // cut off build number
+        "version", version as String,
+        "forge_version", forge_version.split("\\.")[0], // only specify major version of forge
+        "minecraft_version", minecraft_version,
+        "create_version", create_forge_version.split("-")[0] // cut off build number
     )
     properties.forEach((k, v) -> inputs.property(k, v))
 
@@ -73,8 +72,8 @@ processResources {
 loom {
     forge {
         mixinConfig(
-                "alloyed-common.mixins.json",
-                "alloyed.mixins.json"
+            "alloyed-common.mixins.json",
+            "alloyed.mixins.json"
         )
     }
 }
