@@ -1,14 +1,8 @@
 package com.molybdenum.alloyed.fabric.mixin;
 
-import com.molybdenum.alloyed.common.content.extensions.BeltBlockEntityExtension;
 import com.molybdenum.alloyed.common.content.extensions.BeltModelExtension;
-import com.molybdenum.alloyed.common.registry.ModSpriteShifts;
 import com.simibubi.create.content.kinetics.belt.BeltModel;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BeltModel.class)
 public class BeltModelMixin implements BeltModelExtension {

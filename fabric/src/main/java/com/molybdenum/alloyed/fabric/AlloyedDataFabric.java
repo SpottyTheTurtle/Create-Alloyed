@@ -21,6 +21,7 @@ public class AlloyedDataFabric implements DataGeneratorEntrypoint {
 		ExistingFileHelper helper = new ExistingFileHelper(
 			Set.of(alloyedResources), Set.of("create"), false, null, null
 		);
+
 		Alloyed.registrate().setupDatagen(gen, helper);
 		Alloyed.gatherData(gen);
 	}
