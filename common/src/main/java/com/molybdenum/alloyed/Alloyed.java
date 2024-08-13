@@ -1,20 +1,21 @@
 package com.molybdenum.alloyed;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.molybdenum.alloyed.client.registry.ModPonders;
 import com.molybdenum.alloyed.common.compat.farmersdelight.FarmersDelightCompat;
 import com.molybdenum.alloyed.common.item.ModItemGroup;
-import com.molybdenum.alloyed.common.registry.ModBlocks;
 import com.molybdenum.alloyed.data.providers.ModAdvancementProvider;
 import com.molybdenum.alloyed.data.providers.ModProcessingRecipes;
 import com.molybdenum.alloyed.data.recipes.MechanicalCraftingRecipes;
 import com.molybdenum.alloyed.data.registry.ModAdvancements;
 import com.molybdenum.alloyed.util.Utils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Alloyed {
 
@@ -36,8 +37,9 @@ public class Alloyed {
         isFarmersDelightLoaded = Utils.isModLoaded("farmersdelight", null);
         isCreateDecoLoaded = Utils.isModLoaded("createdeco", null);
 
-        if (isFarmersDelightLoaded)
+        if (isFarmersDelightLoaded) {
             FarmersDelightCompat.steelKnifeDispenseBehaviour();
+        }
     }
 
     public static ResourceLocation asResource(String name) {

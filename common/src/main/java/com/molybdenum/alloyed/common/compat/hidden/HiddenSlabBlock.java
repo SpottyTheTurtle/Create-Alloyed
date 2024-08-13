@@ -1,12 +1,14 @@
 package com.molybdenum.alloyed.common.compat.hidden;
 
+import org.lwjgl.system.NonnullDefault;
+
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.SlabBlock;
-import org.lwjgl.system.NonnullDefault;
 
 public class HiddenSlabBlock extends SlabBlock {
+
     public HiddenSlabBlock(Properties p_i48331_1_) {
         super(p_i48331_1_);
     }

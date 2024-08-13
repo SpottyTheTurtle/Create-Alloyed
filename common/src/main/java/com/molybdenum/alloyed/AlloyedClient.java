@@ -5,6 +5,7 @@ import com.molybdenum.alloyed.client.registry.ModPartialModels;
 import com.molybdenum.alloyed.client.registry.ModPonders;
 
 public class AlloyedClient {
+
     public static void init() {
         ModPartialModels.register();
 

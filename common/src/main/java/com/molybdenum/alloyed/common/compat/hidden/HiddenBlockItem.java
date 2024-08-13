@@ -1,13 +1,15 @@
 package com.molybdenum.alloyed.common.compat.hidden;
 
+import org.lwjgl.system.NonnullDefault;
+
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
-import org.lwjgl.system.NonnullDefault;
 
 public class HiddenBlockItem extends BlockItem {
+
     public HiddenBlockItem(Block pBlock, Properties pProperties) {
         super(pBlock, pProperties);
     }

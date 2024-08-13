@@ -9,16 +9,17 @@ import com.simibubi.create.foundation.ponder.PonderRegistry;
 import com.simibubi.create.infrastructure.ponder.AllPonderTags;
 
 public class ModPonders {
+
     private static final PonderRegistrationHelper HELPER = new PonderRegistrationHelper(Alloyed.MOD_ID);
 
     public static void register() {
         Alloyed.LOGGER.debug("Registering ModPonders!");
         HELPER.forComponents(ModBlocks.BRONZE_BELL)
-                .addStoryBoard("bronze_bell/decoration", BronzeBellPonder::decoration, AllPonderTags.DECORATION)
-                .addStoryBoard("bronze_bell/instrument", BronzeBellPonder::instrument, AllPonderTags.DECORATION);
+            .addStoryBoard("bronze_bell/decoration", BronzeBellPonder::decoration, AllPonderTags.DECORATION)
+            .addStoryBoard("bronze_bell/instrument", BronzeBellPonder::instrument, AllPonderTags.DECORATION);
 
         PonderRegistry.TAGS.forTag(AllPonderTags.DECORATION)
-                .add(ModBlocks.BRONZE_BELL);
+            .add(ModBlocks.BRONZE_BELL);
     }
 
     public static void registerLang() {

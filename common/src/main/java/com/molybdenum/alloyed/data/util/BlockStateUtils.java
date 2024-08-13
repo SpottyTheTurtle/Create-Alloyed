@@ -1,30 +1,32 @@
 package com.molybdenum.alloyed.data.util;
 
 import com.molybdenum.alloyed.Alloyed;
-import com.simibubi.create.foundation.utility.Iterate;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
+
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.SlabType;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 
 public class BlockStateUtils {
 
-    public static <T extends Block> void existingModel(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov) {
+    public static <T extends Block> void existingModel(DataGenContext<Block, T> ctx,
+        RegistrateBlockstateProvider prov) {
         prov.simpleBlock(
-                ctx.getEntry(),
-                prov.models()
-                        .getExistingFile(prov.modLoc("block/" + ctx.getName()))
+            ctx.getEntry(),
+            prov.models()
+                .getExistingFile(prov.modLoc("block/" + ctx.getName()))
         );
     }
 
     public static class Unique { // Blockstate code for specific blocks
-        public static <T extends Block> void steelCatwalkBlockstate(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov) {
+
+        public static <T extends Block> void steelCatwalkBlockstate(DataGenContext<Block, T> ctx,
+            RegistrateBlockstateProvider prov) {
             //fixme
 //            // Credit to C: Deco for most of this blockstate code
 //            String texture = "alloyed:block/steel_catwalk";
@@ -74,12 +76,13 @@ public class BlockStateUtils {
 //            }
         }
 
-        public static <T extends Block> void steelVerticalSlabBlockstate(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov) {
+        public static <T extends Block> void steelVerticalSlabBlockstate(DataGenContext<Block, T> ctx,
+            RegistrateBlockstateProvider prov) {
             // Credit to C: Deco for most of this blockstate code
             ResourceLocation texture = prov.modLoc("block/steel_sheet_metal");
 
             BlockModelBuilder half = prov.models().withExistingParent(ctx.getName(),
-                    prov.modLoc("block/vertical_slab")).texture("side", texture);
+                prov.modLoc("block/vertical_slab")).texture("side", texture);
             BlockModelBuilder both = prov.models().cubeAll(ctx.getName() + "_double", texture);
 
             int y = 0;
@@ -92,49 +95,55 @@ public class BlockStateUtils {
                 }
 
                 prov.getMultipartBuilder(ctx.get()).part().modelFile(half).rotationY(y).addModel()
-                        .condition(BlockStateProperties.SLAB_TYPE, SlabType.BOTTOM)
-                        .condition(BlockStateProperties.HORIZONTAL_FACING, dir).end();
+                    .condition(BlockStateProperties.SLAB_TYPE, SlabType.BOTTOM)
+                    .condition(BlockStateProperties.HORIZONTAL_FACING, dir).end();
                 prov.getMultipartBuilder(ctx.get()).part().modelFile(both).rotationY(y).addModel()
-                        .condition(BlockStateProperties.SLAB_TYPE, SlabType.DOUBLE).end();
+                    .condition(BlockStateProperties.SLAB_TYPE, SlabType.DOUBLE).end();
             }
         }
 
-        public static <T extends Block> void steelBarsBlockstate(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov) {
+        public static <T extends Block> void steelBarsBlockstate(DataGenContext<Block, T> ctx,
+            RegistrateBlockstateProvider prov) {
             // Credit to C: Deco for most of this blockstate code
             ResourceLocation barTexture = Alloyed.asResource("block/steel_bars/block");
             ResourceLocation postTexture = Alloyed.asResource("block/steel_bars/post");
             MultiPartBlockStateBuilder builder = prov.getMultipartBuilder(ctx.get());
 
             BlockModelBuilder sideModel = prov.models().withExistingParent(
-                            "block/steel_bars/steel_bars_side", prov.mcLoc("block/iron_bars_side"))
-                    .texture("bars", barTexture)
-                    .texture("edge", postTexture)
-                    .texture("particle", postTexture);
+                    "block/steel_bars/steel_bars_side", prov.mcLoc("block/iron_bars_side"))
+                .texture("bars", barTexture)
+                .texture("edge", postTexture)
+                .texture("particle", postTexture);
             BlockModelBuilder sideAltModel = prov.models().withExistingParent(
-                            "block/steel_bars/steel_bars_side_alt", prov.mcLoc("block/iron_bars_side_alt"))
-                    .texture("bars", barTexture)
-                    .texture("edge", postTexture)
-                    .texture("particle", postTexture);
+                    "block/steel_bars/steel_bars_side_alt", prov.mcLoc("block/iron_bars_side_alt"))
+                .texture("bars", barTexture)
+                .texture("edge", postTexture)
+                .texture("particle", postTexture);
 
-            builder.part().modelFile(prov.models().withExistingParent("block/steel_bars/steel_bars_post", prov.mcLoc("block/iron_bars_post"))
-                            .texture("bars", postTexture).texture("particle", postTexture)
-                    ).addModel()
-                    .condition(BlockStateProperties.NORTH, false)
-                    .condition(BlockStateProperties.SOUTH, false)
-                    .condition(BlockStateProperties.EAST, false)
-                    .condition(BlockStateProperties.WEST, false)
-                    .end();
             builder.part().modelFile(
-                    prov.models().withExistingParent("block/steel_bars/steel_bars_post_ends", prov.mcLoc("block/iron_bars_post_ends"))
-                            .texture("edge", postTexture).texture("particle", postTexture)
+                    prov.models().withExistingParent("block/steel_bars/steel_bars_post", prov.mcLoc("block/iron_bars_post"))
+                        .texture("bars", postTexture).texture("particle", postTexture)
+                ).addModel()
+                .condition(BlockStateProperties.NORTH, false)
+                .condition(BlockStateProperties.SOUTH, false)
+                .condition(BlockStateProperties.EAST, false)
+                .condition(BlockStateProperties.WEST, false)
+                .end();
+            builder.part().modelFile(
+                prov.models().withExistingParent("block/steel_bars/steel_bars_post_ends",
+                        prov.mcLoc("block/iron_bars_post_ends"))
+                    .texture("edge", postTexture).texture("particle", postTexture)
             ).addModel().end();
             builder.part().modelFile(sideModel).addModel().condition(BlockStateProperties.NORTH, true).end();
-            builder.part().modelFile(sideModel).rotationY(90).addModel().condition(BlockStateProperties.EAST, true).end();
+            builder.part().modelFile(sideModel).rotationY(90).addModel().condition(BlockStateProperties.EAST, true)
+                .end();
             builder.part().modelFile(sideAltModel).addModel().condition(BlockStateProperties.SOUTH, true).end();
-            builder.part().modelFile(sideAltModel).rotationY(90).addModel().condition(BlockStateProperties.WEST, true).end();
+            builder.part().modelFile(sideAltModel).rotationY(90).addModel().condition(BlockStateProperties.WEST, true)
+                .end();
         }
 
-        public static <T extends Block> void steelMeshFenceBlockstate(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov) {
+        public static <T extends Block> void steelMeshFenceBlockstate(DataGenContext<Block, T> ctx,
+            RegistrateBlockstateProvider prov) {
             //fixme
         }
 //            ResourceLocation post = prov.modLoc("block/steel_sheet_metal");

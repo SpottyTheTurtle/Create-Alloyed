@@ -1,18 +1,5 @@
 package com.molybdenum.alloyed.data.providers;
 
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.molybdenum.alloyed.Alloyed;
-import com.molybdenum.alloyed.data.advancements.DisplayInfoBuilder;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.HashCache;
-import net.minecraft.resources.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -20,7 +7,22 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
 
+import org.jetbrains.annotations.NotNull;
+
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.molybdenum.alloyed.Alloyed;
+import com.molybdenum.alloyed.data.advancements.DisplayInfoBuilder;
+
+import net.minecraft.advancements.Advancement;
+import net.minecraft.data.CachedOutput;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
+import net.minecraft.resources.ResourceLocation;
+
 public class ModAdvancementProvider implements DataProvider {
+
     private final DataGenerator generator;
     private static final List<NamedAdvancementBuilder> advancements = new ArrayList<>();
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
@@ -51,7 +53,7 @@ public class ModAdvancementProvider implements DataProvider {
         Path path = this.generator.getOutputFolder();
         Set<ResourceLocation> set = Sets.newHashSet();
 
-        for (NamedAdvancementBuilder advancement: advancements) {
+        for (NamedAdvancementBuilder advancement : advancements) {
             if (!set.add(advancement.id)) {
                 throw new IllegalStateException("Duplicate advancement " + advancement.id);
             } else {
@@ -68,7 +70,8 @@ public class ModAdvancementProvider implements DataProvider {
     }
 
     private static Path createPath(Path pPath, NamedAdvancementBuilder pAdvancement) {
-        return pPath.resolve("data/" + pAdvancement.id.getNamespace() + "/advancements/" + pAdvancement.id.getPath() + ".json");
+        return pPath.resolve(
+            "data/" + pAdvancement.id.getNamespace() + "/advancements/" + pAdvancement.id.getPath() + ".json");
     }
 
     /**
@@ -80,6 +83,7 @@ public class ModAdvancementProvider implements DataProvider {
     }
 
     public static class NamedAdvancementBuilder {
+
         public String name;
         public ResourceLocation id;
         public Advancement.Builder builder;

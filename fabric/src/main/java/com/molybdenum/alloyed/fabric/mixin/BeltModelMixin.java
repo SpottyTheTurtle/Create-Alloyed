@@ -1,8 +1,9 @@
 package com.molybdenum.alloyed.fabric.mixin;
 
+import org.spongepowered.asm.mixin.Mixin;
+
 import com.molybdenum.alloyed.common.content.extensions.BeltModelExtension;
 import com.simibubi.create.content.kinetics.belt.BeltModel;
-import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(BeltModel.class)
 public class BeltModelMixin implements BeltModelExtension {

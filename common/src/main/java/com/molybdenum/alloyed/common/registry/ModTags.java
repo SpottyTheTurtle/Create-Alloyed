@@ -1,11 +1,9 @@
 package com.molybdenum.alloyed.common.registry;
 
 import com.molybdenum.alloyed.Alloyed;
+
 import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -13,6 +11,7 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
 
     public static class Items {
+
         // Get steel shears working
         public static final TagKey<Item> STEEL_SHEARS = createForgeTag("shears");
 
@@ -36,7 +35,7 @@ public class ModTags {
         public static final TagKey<Item> STEEL_KNIFE = createForgeTag("tools/knives");
 
         // Compat for Farmer's Delight's knives
-        public static final TagKey<Item> STEEL_KNIFE_FD = createSpecialTag("farmersdelight","tools/knives");
+        public static final TagKey<Item> STEEL_KNIFE_FD = createSpecialTag("farmersdelight", "tools/knives");
 
         // All bronze instruments
         public static final TagKey<Item> BRONZE_INSTRUMENTS = createTag("bronze_instruments");
